@@ -84,12 +84,16 @@ This project is a Next.js admin dashboard application using TypeScript, Tailwind
     Create a new Neon database and use the following SQL schema to set up your tables:
 
     ```sql
+    CREATE TYPE status AS ENUM ('active', 'inactive', 'archived');
+
     CREATE TABLE products (
-       id SERIAL PRIMARY KEY,
-       name VARCHAR(255) NOT NULL,
-       price DECIMAL(10, 2) NOT NULL,
-       description TEXT,
-       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      id SERIAL PRIMARY KEY,
+      image_url TEXT NOT NULL,
+      name TEXT NOT NULL,
+      status status NOT NULL,
+      price NUMERIC(10, 2) NOT NULL,
+      stock INTEGER NOT NULL,
+      available_at TIMESTAMP NOT NULL
     );
     ```
 
